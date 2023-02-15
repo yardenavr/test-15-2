@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: my-deployment
+spec:
+  replicas: 4
+  selector:
+    matchLabels:
+      app: my-app
+  template:
+    metadata:
+      labels:
+        app: my-app
+    spec:
+      containers:
+        - name: react-app
+          image: hothaifaz11/react-app
+          ports:
+            - containerPort: 3000
+        - name: nginx
+          image: nginx
+          ports:
+            - containerPort: 80
